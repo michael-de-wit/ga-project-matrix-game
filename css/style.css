@@ -1,0 +1,10 @@
+.attempt-matrix-input {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    border: 1px solid red;
+}
+
+.closing-bracket {
+    border: 1px solid red;
+
+}

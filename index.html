@@ -10,16 +10,39 @@
 </head>
 
 <body>
-    <svg height="800" width="800">
+    <svg height="400" width="800">
         <line x1="0" y1="200" x2="400" y2="200" stroke="darkblue" /> <!-- x axis -->
         <line x1="200" y1="0" x2="200" y2="400" stroke="darkblue" /> <!-- y axis -->
 
-        <line class="initial-vector" x1="0" y1="0" x2="0" y2="0" stroke = darkblue stroke-width="4" /> <!-- initial vector -->
-        <line class="target-vector" x1="0" y1="0" x2="0" y2="0" stroke = orange  stroke-width="4" /> <!-- initial vector -->
-        <line class="attempt-vector" x1="0" y1="0" x2="0" y2="0" stroke = green stroke-width="4" /> <!-- initial vector -->
-
-
+        <line class="initial-vector" x1="0" y1="0" x2="0" y2="0" stroke=darkblue stroke-width="3" />
+        <!-- initial vector -->
+        <line class="target-vector" x1="0" y1="0" x2="0" y2="0" stroke=orange stroke-width="6" />
+        <!-- initial vector -->
+        <line class="attempt-vector" x1="0" y1="0" x2="0" y2="0" stroke=green stroke-width="3" />
+        <!-- initial vector -->
     </svg>
+    <div class="attempt-matrix-input">
+        <div class="opening-bracket">[</div>
+        <div class="matrix-values">
+            <div class="a_11-position">
+                <label for="matrix-input">A_11:</label>
+                <input type="number" name="a_11-input" min="-5" max="5">
+            </div>
+            <div class="a_12-position">
+                <label for="matrix-input">A_12:</label>
+                <input type="number" name="a_12-input" min="-5" max="5">
+            </div>
+            <div class="a_21-position">
+                <label for="matrix-input">A_21:</label>
+                <input type="number" name="a_21-input" min="-5" max="5">
+            </div>
+            <div class="a_22-position">
+                <label for="matrix-input">A_22:</label>
+                <input type="number" name="a_22-input" min="-5" max="5">
+            </div>
+        </div>
+        <div class="closing-bracket">]</div>
+    </div>
 </body>
 
 </html>

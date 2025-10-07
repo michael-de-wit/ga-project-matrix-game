@@ -1,3 +1,8 @@
+//Initialize attempt 2X2 matrix
+let matrixR1C1Attempt = 0 //Attempt matrix a_11 position: 1st row, 1st column
+let matrixR2C1Attempt = 0 //Attempt matrix a_12 position: 2nd row, 1st column
+let matrixR1C2Attempt = 0 //Attempt matrix a_21 position: 1st row, 2nd column
+let matrixR2C2Attempt = 0 //Attempt matrix a_22 position: 2nd row, 2nd column
 
 // Determine target 2X2 matrix
 let matrixR1C1Target = 1 //Target matrix a_11 position: 1st row, 1st column
@@ -20,15 +25,40 @@ y2PosTargetStarting = 3 //y_2 coordinate in basis vector space
 //Graph the ending position of the target vector
 graphVector(x2PosTargetStarting, y2PosTargetStarting, matrixR1C1Target, matrixR2C1Target, matrixR1C2Target, matrixR2C2Target, `target`,`ending`)
 
-
-//Determine attempt 2X2 matrix
-let matrixR1C1Attempt = -2 //Attempt matrix a_11 position: 1st row, 1st column
-let matrixR2C1Attempt = 1 //Attempt matrix a_12 position: 2nd row, 1st column
-let matrixR1C2Attempt = -1 //Attempt matrix a_21 position: 1st row, 2nd column
-let matrixR2C2Attempt = 1 //Attempt matrix a_22 position: 2nd row, 2nd column
-
 //Graph the ending position of the attempt vector
 graphVector(x2PosInitialStarting, y2PosInitialStarting, matrixR1C1Attempt, matrixR2C1Attempt, matrixR1C2Attempt, matrixR2C2Attempt, `attempt`,`ending`)
+
+
+
+let matrixR1C1Pos = document.querySelector('input[name="a_11-input"');
+matrixR1C1Pos.addEventListener('input', function(event) {
+    matrixR1C1Attempt = event.data
+    graphVector(x2PosInitialStarting, y2PosInitialStarting, matrixR1C1Attempt, matrixR2C1Attempt, matrixR1C2Attempt, matrixR2C2Attempt, `attempt`,`ending`)
+
+})
+
+
+let matrixR1C2Pos = document.querySelector('input[name="a_12-input"');
+matrixR1C2Pos.addEventListener('input', function(event) {
+    matrixR1C2Attempt = event.data
+    graphVector(x2PosInitialStarting, y2PosInitialStarting, matrixR1C1Attempt, matrixR2C1Attempt, matrixR1C2Attempt, matrixR2C2Attempt, `attempt`,`ending`)
+
+})
+
+let matrixR2C1Pos = document.querySelector('input[name="a_21-input"');
+matrixR2C1Pos.addEventListener('input', function(event) {
+    matrixR2C1Attempt = event.data
+    graphVector(x2PosInitialStarting, y2PosInitialStarting, matrixR1C1Attempt, matrixR2C1Attempt, matrixR1C2Attempt, matrixR2C2Attempt, `attempt`,`ending`)
+
+})
+
+let matrixR2C2Pos = document.querySelector('input[name="a_22-input"');
+matrixR2C2Pos.addEventListener('input', function(event) {
+    matrixR2C2Attempt = event.data
+    graphVector(x2PosInitialStarting, y2PosInitialStarting, matrixR1C1Attempt, matrixR2C1Attempt, matrixR1C2Attempt, matrixR2C2Attempt, `attempt`,`ending`)
+
+})
+
 
 
 // FUNCTIONS
