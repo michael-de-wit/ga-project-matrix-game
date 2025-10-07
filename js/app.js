@@ -1,81 +1,34 @@
 
-//INITIAL VECTOR SET-UP
-//Initial vector coordinates in basis vector space
-x1Pos = 0 //x_1 coordinate in basis vector space
-y1Pos = 0 //y_1 coordinate in basis vector space
-x2Pos = 3 //x_2 coordinate in basis vector space
-y2Pos = 3 //y_2 coordinate in basis vector space
+// Determine target 2X2 matrix
+let matrixR1C1Target = 1 //Target matrix a_11 position: 1st row, 1st column
+let matrixR2C1Target = 1 //Target matrix a_12 position: 2nd row, 1st column
+let matrixR1C2Target = -1 //Target matrix a_21 position: 1st row, 2nd column
+let matrixR2C2Target = 0 //Target matrix a_22 position: 2nd row, 2nd column
 
-//Convert initial vector coordinates from basis to browser vector space
-x1PosGraph = calculateBrowserXPosition(x1Pos) //convert x_1 coordinate to browser vector space
-y1PosGraph = calculateBrowserYPosition(y1Pos) //convert y_1 coordinate to browser vector space
-x2PosGraph = calculateBrowserXPosition(x2Pos) //convert x_2 coordinate to browser vector space
-y2PosGraph = calculateBrowserYPosition(y2Pos) //convert y_2 coordinate to browser vector space
+//Initial starting vector coordinates in basis vector space
+x2PosInitialStarting = 3 //x_2 coordinate in basis vector space
+y2PosInitialStarting = 3 //y_2 coordinate in basis vector space
 
-//Connect to the 'initial-vector' class for initial vector updates
-const vectorLine = document.querySelector('.initial-vector')
+//Graph the starting position of the initial / attempt vector
+graphVector(x2PosInitialStarting, y2PosInitialStarting, matrixR1C1Target, matrixR2C1Target, matrixR1C2Target, matrixR2C2Target, `initial`,`starting`)
 
-//Plot the initial vector in browser vector space
-vectorLine.setAttribute("stroke", "darkblue")
-vectorLine.setAttribute("x1", x1PosGraph)
-vectorLine.setAttribute("y1", y1PosGraph)
-vectorLine.setAttribute("x2", x2PosGraph)
-vectorLine.setAttribute("y2", y2PosGraph)
+//
+//Target starting vector coordinates in basis vector space
+x2PosTargetStarting = 3 //x_2 coordinate in basis vector space
+y2PosTargetStarting = 3 //y_2 coordinate in basis vector space
+
+//Graph the ending position of the target vector
+graphVector(x2PosTargetStarting, y2PosTargetStarting, matrixR1C1Target, matrixR2C1Target, matrixR1C2Target, matrixR2C2Target, `target`,`ending`)
 
 
-//TARGET MATRIX SET-UP
-//Target matrix values in basis vector space
-// TargetMatrixa11 TargetMatrixa12
-// TargetMatrixa21 TargetMatrixa22
-TargetMatrixa11 = 1 //Target matrix a_11 position: 1st row, 1st column
-TargetMatrixa21 = 1 //Target matrix a_12 position: 2nd row, 1st column
-TargetMatrixa12 = -1 //Target matrix a_21 position: 1st row, 2nd column
-TargetMatrixa22 = 1 //Target matrix a_22 position: 2nd row, 2nd column
+//Determine attempt 2X2 matrix
+let matrixR1C1Attempt = -2 //Attempt matrix a_11 position: 1st row, 1st column
+let matrixR2C1Attempt = 1 //Attempt matrix a_12 position: 2nd row, 1st column
+let matrixR1C2Attempt = -1 //Attempt matrix a_21 position: 1st row, 2nd column
+let matrixR2C2Attempt = 1 //Attempt matrix a_22 position: 2nd row, 2nd column
 
-
-//TARGET VECTOR SET-UP
-//Starting position of target vector coordinates in basis vector space
-x1PosTarget = 0 //x_1 coordinate in basis vector space
-y1PosTarget = 0 //y_1 coordinate in basis vector space
-x2PosTarget = 3 //x_2 coordinate in basis vector space
-y2PosTarget = 3 //y_2 coordinate in basis vector space
-
-//Converts starting position of target vector coordinates from basis to browser vector space
-x1PosTargetGraph = calculateBrowserXPosition(x1PosTarget) //convert x_1 coordinate to browser vector space
-y1PosTargetGraph = calculateBrowserYPosition(y1PosTarget) //convert y_1 coordinate to browser vector space
-x2PosTargetGraph = calculateBrowserXPosition(x2PosTarget) //convert x_2 coordinate to browser vector space
-y2PosTargetGraph = calculateBrowserYPosition(y2PosTarget) //convert y_2 coordinate to browser vector space
-
-//Connect to the 'target-vector' class for target vector updates
-let vectorLineTarget = document.querySelector('.target-vector')
-
-//Plot the starting position of the target vector in browser vector space
-vectorLineTarget.setAttribute("stroke", "darkorange")
-vectorLineTarget.setAttribute("x1", x1PosTargetGraph)
-vectorLineTarget.setAttribute("y1", y1PosTargetGraph)
-vectorLineTarget.setAttribute("x2", x2PosTargetGraph)
-vectorLineTarget.setAttribute("y2", y2PosTargetGraph)
-
-//Determine ending position of the target vector
-let x2PosTargetVector = 0
-let y2PosTargetVector = 0
-x2PosTargetVector, y2PosTargetVector = calculateEndingVector(x2PosTarget, y2PosTarget, TargetMatrixa11, TargetMatrixa21, TargetMatrixa12, TargetMatrixa22)
-
-x2PosTargetGraph = calculateBrowserXPosition(x2PosTargetVector) //convert x_2 coordinate to browser vector space
-y2PosTargetGraph = calculateBrowserYPosition(y2PosTargetVector) //convert y_2 coordinate to browser vector space
-
-// Update the target vector coordinates with its ending position coordindates in browser vector space
-vectorLineTarget.setAttribute("x2", x2PosTargetGraph)
-vectorLineTarget.setAttribute("y2", y2PosTargetGraph)
-
-
-//ATTEMPT MATRIX SET-UP
-attemptMatrixa11 = 2 //Attempt matrix a_11 position: 1st row, 1st column
-attemptMatrixa21 = 1 //Attempt matrix a_12 position: 2nd row, 1st column
-attemptMatrixa12 = -1 //Attempt matrix a_21 position: 1st row, 2nd column
-attemptMatrixa22 = 1 //Attempt matrix a_22 position: 2nd row, 2nd column
-
-//ATTEMPT VECTOR SET-UP
+//Graph the ending position of the attempt vector
+graphVector(x2PosInitialStarting, y2PosInitialStarting, matrixR1C1Attempt, matrixR2C1Attempt, matrixR1C2Attempt, matrixR2C2Attempt, `attempt`,`ending`)
 
 
 // FUNCTIONS
@@ -148,4 +101,3 @@ function graphVector(x2PosStartingVector, y2PosStartingVector, matrixR1C1, matri
     console.log(vectorToUpdate);
 }
 
-graphVector(2, 2, 1, 1, -1, 1, `initial`,`ending`)
